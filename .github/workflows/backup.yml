@@ -1,0 +1,46 @@
+name: Backup Giveaway Data
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight UTC
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Create backup
+      run: |
+        mkdir -p backups
+        DATE=$(date +%Y%m%d_%H%M%S)
+        
+        # Download CSV data
+        curl -o backups/giveaway_entries_$DATE.csv \
+          "${{ secrets.RAILWAY_APP_URL }}/api/giveaway/export" || echo "No entries yet"
+        
+        # Get statistics
+        curl -s "${{ secrets.RAILWAY_APP_URL }}/api/giveaway/count" \
+          > backups/stats_$DATE.json || echo "{}"
+          
+        # Get health check
+        curl -s "${{ secrets.RAILWAY_APP_URL }}/health" \
+          > backups/health_$DATE.json || echo "{}"
+    
+    - name: Upload backup artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: giveaway-backup-${{ github.run_number }}
+        path: backups/
+        retention-days: 90
+    
+    - name: Create backup branch
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git checkout -b backup/$(date +%Y%m%d)
+        git add backups/
+        git commit -m "Automated backup $(date +%Y%m%d)" || echo "No changes"
+        git push origin backup/$(date +%Y%m%d) || echo "Branch exists"
