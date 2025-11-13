@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNIPE × Breakpoint 2025 | Win a Free Conference Ticket</title>
+    <meta name="description" content="Pre-register for SNIPE — the game of trading the moment. Ride trends, lock profits, and play to win on Solana. One lucky player wins a FREE Breakpoint 2025 conference ticket!">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="SNIPE × Breakpoint 2025 | Win a Free Conference Ticket">
+    <meta property="og:description" content="Every trend is a game — play it. Pre-register for SNIPE and win a FREE Breakpoint 2025 ticket worth $899!">
+    <meta property="og:image" content="SNIPE-LOGO.png">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="SNIPE-LOGO.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --text-muted: #94A3B8;
+            --accent: #00ff88;
+            --accent-hover: #00cc6a;
+            --secondary: #6366f1;
+            --danger: #ef4444;
+            --border: rgba(255, 255, 255, 0.08);
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --gradient-1: linear-gradient(135deg, #00ff88 0%, #6366f1 100%);
+            --gradient-2: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: 1;
+            pointer-events: none;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxmaWx0ZXIgaWQ9Im5vaXNlRmlsdGVyIj4KICAgICAgPGZlVHVyYnVsZW5jZSB0eXBlPSJ0dXJidWxlbmNlIiBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjQiIC8+CiAgICA8L2ZpbHRlcj4KICAgIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZUZpbHRlcikiIG9wYWNpdHk9IjAuNSIgLz4KICA8L3N2Zz4=');
+        }
+
+        /* Animated gradient background */
+        .bg-gradient {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 25%;
+            background: var(--gradient-1);
+            animation: progress 2s ease-out;
+        }
+
+        @keyframes progress {
+            from { width: 0; }
+            to { width: 25%; }
+        }
+
+        /* Trust banner */
+        .trust-banner {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .trust-items {
+            display: inline-flex;
+            align-items: center;
+            gap: 30px;
+            padding: 12px 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trust-item strong {
+            color: var(--accent);
+        }
+
+        /* Logo */
+        .logo-section {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 50px rgba(0, 255, 136, 0.5));
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 50px rgba(0, 255, 136, 0.5)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 80px rgba(0, 255, 136, 0.7)); }
+        }
+
+        /* Hero content */
+        .hero-content {
+            text-align: center;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: var(--gradient-2);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .badge::before {
+            content: '🎉';
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .gradient-text {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: clamp(15px, 2.5vw, 18px);
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-bottom: 12px;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .tagline {
+            font-size: clamp(16px, 2.5vw, 22px);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease 0.5s both;
+            letter-spacing: -0.01em;
+        }
+
+        /* Main content grid */
+        .main-grid {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+
+        /* Form section */
+        .form-section {
+            animation: fadeInUp 0.8s ease 0.6s both;
+            width: 100%;
+        }
+
+
+        .form-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+
+        .form-subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+
+        .spots-left::before {
+            content: '⚡';
+        }
+
+        /* Form fields */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: rgba(148, 163, 184, 0.6);
+        }
+
+        input:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(0, 255, 136, 0.1);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        /* Submit button */
+        .submit-btn {
+            width: 100%;
+            padding: 16px 24px;
+            background: var(--gradient-1);
+            color: var(--bg);
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Success state */
+        .success-state {
+            display: none;
+            text-align: center;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .success-state.show {
+            display: block;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .success-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .success-message {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 24px;
+        }
+
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease 0.7s both;
+        }
+
+        .feature:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: inline-block;
+            filter: grayscale(0.2);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover .feature-icon {
+            filter: grayscale(0);
+            transform: scale(1.1);
+        }
+
+        .feature h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feature p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px 20px;
+            border-top: 1px solid var(--border);
+            animation: fadeInUp 0.8s ease 0.9s both;
+        }
+
+        .footer-logo {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 20px;
+            opacity: 0.6;
+        }
+
+        .footer-tagline {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .footer-copyright {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Optimize for common screen heights */
+        @media (max-height: 1080px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .features {
+                margin-bottom: 30px;
+            }
+            
+        }
+        
+        /* Hide elements on smaller viewports */
+        @media (max-height: 900px) {
+            
+            footer {
+                display: none;
+            }
+            
+            .features {
+                margin-bottom: 20px;
+            }
+            
+            .main-grid {
+                margin-bottom: 20px;
+                max-width: 90%;
+            }
+        }
+        
+        @media (max-height: 800px) {
+            .features {
+                display: none;
+            }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .trust-items {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px 20px;
+            }
+
+            h1 {
+                font-size: 36px;
+                margin-bottom: 16px;
+            }
+
+            .main-grid {
+                max-width: 90%;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+
+            .form-card {
+                padding: 24px;
+            }
+
+            .testimonial-logos {
+                gap: 20px;
+            }
+        }
+
+        /* Animations on scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    
+    <!-- Progress bar -->
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+    
+    <div class="container">
+        
+        <!-- Logo and hero -->
+        <div class="logo-section">
+            <div class="logo">
+                <img src="SNIPE-LOGO.png" alt="SNIPE Logo">
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="badge">Exclusive Breakpoint Giveaway</div>
+            <h1>Win a FREE<br><span class="gradient-text">Breakpoint 2025</span><br>Conference Ticket</h1>
+            <p class="subtitle">
+                Pre-register for SNIPE — the game of trading the moment.<br>
+                Ride trends, lock profits, and play to win on Solana.
+            </p>
+            <p class="tagline">From hesitation to flow — SNIPE the moment.</p>
+        </div>
+        
+        <!-- Main content grid -->
+        <div class="main-grid">
+            <!-- Form section -->
+            <div class="form-section">
+                <div class="form-card">
+                    <div class="form-header">
+                        <h2 class="form-title">Reserve Your Spot</h2>
+                        <p class="form-subtitle">Join the future of trading</p>
+                    </div>
+                    
+                    
+                    <!-- Form -->
+                    <form id="preRegisterForm">
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <div class="input-wrapper">
+                                <input type="email" id="email" placeholder="trader@example.com" required autocomplete="email">
+                                <span class="input-icon">📧</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="telegram">Telegram Username</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="telegram" placeholder="@yourtelegram" required autocomplete="off">
+                                <span class="input-icon">✈️</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="xusername">X (Twitter) Username</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="xusername" placeholder="@yourusername" required autocomplete="off">
+                                <span class="input-icon">𝕏</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="solanaWallet">Solana Wallet (Optional)</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="solanaWallet" placeholder="Your SOL address" autocomplete="off">
+                                <span class="input-icon">👛</span>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            Enter Giveaway Now
+                        </button>
+                    </form>
+                    
+                    <!-- Success state -->
+                    <div class="success-state" id="successState">
+                        <div class="success-icon">✅</div>
+                        <h3 class="success-title">You're in!</h3>
+                        <p class="success-message">
+                            Get ready to SNIPE the moment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Features -->
+        <div class="features animate-on-scroll">
+            <div class="feature">
+                <div class="feature-icon">📈</div>
+                <h3>Ride Trends</h3>
+                <p>Catch moves first</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🛡</div>
+                <h3>Lock Profits</h3>
+                <p>Auto TP/SL</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚔️</div>
+                <h3>Compete</h3>
+                <p>Live leaderboard</p>
+            </div>
+        </div>
+        
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-logo">
+                <img src="SNIPE-LOGO.png" alt="SNIPE" style="width: 100%; height: 100%; object-fit: contain; opacity: 0.6;">
+            </div>
+            <p class="footer-tagline">Every trend is a game — play it.</p>
+            <p class="footer-copyright">© 2025 SNIPE. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Telegram</a>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        
+        
+        // Form submission
+        document.getElementById('preRegisterForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const telegram = document.getElementById('telegram').value;
+            const xusername = document.getElementById('xusername').value;
+            const wallet = document.getElementById('solanaWallet').value;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Disable button with loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+            
+            // === STORAGE OPTIONS - Choose ONE and uncomment ===
+            
+            // Option 0: Simple Web3Forms (FREE - just email, no signup)
+            // Get your access key at: https://web3forms.com
+            /*
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    access_key: 'YOUR-ACCESS-KEY', // Get free at web3forms.com
+                    subject: 'New Breakpoint Giveaway Entry',
+                    email: email,
+                    telegram: telegram,
+                    xusername: xusername,
+                    wallet: wallet || 'Not provided',
+                    timestamp: new Date().toISOString()
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Entry submitted:', { email, telegram, xusername, wallet });
+                    document.getElementById('preRegisterForm').style.display = 'none';
+                    document.getElementById('successState').classList.add('show');
+                } else {
+                    throw new Error('Submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error submitting form. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enter Giveaway Now';
+            });
+            */
+            
+            // Option 1: Formspree (sign up at https://formspree.io)
+            // Replace 'YOUR_FORM_ID' with your actual Formspree form ID
+            /*
+            fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    telegram: telegram,
+                    xusername: xusername,
+                    wallet: wallet,
+                    timestamp: new Date().toISOString()
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success
+                    document.querySelector('.form-container').classList.remove('show');
+                    document.querySelector('.success-state').classList.add('show');
+                } else {
+                    throw new Error('Submission failed');
+                }
+            })
+            .catch(error => {
+                alert('Error submitting form. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enter Giveaway Now';
+            });
+            */
+            
+            // Option 2: Webhook (webhook.site, Make, Zapier, n8n)
+            // Replace with your webhook URL
+            /*
+            fetch('https://webhook.site/YOUR-WEBHOOK-ID', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    telegram: telegram,
+                    xusername: xusername,
+                    wallet: wallet,
+                    timestamp: new Date().toISOString(),
+                    userAgent: navigator.userAgent,
+                    referrer: document.referrer
+                })
+            })
+            .then(response => {
+                // Note: webhook.site returns CORS error but still receives data
+                // For production, use proper webhook service
+                document.querySelector('.form-container').classList.remove('show');
+                document.querySelector('.success-state').classList.add('show');
+            })
+            .catch(error => {
+                // If using webhook.site, you can ignore CORS errors
+                document.querySelector('.form-container').classList.remove('show');
+                document.querySelector('.success-state').classList.add('show');
+            });
+            */
+            
+            // Option 3: Local Storage (for testing/demo only)
+            /*
+            const entries = JSON.parse(localStorage.getItem('giveawayEntries') || '[]');
+            entries.push({
+                email: email,
+                telegram: telegram,
+                xusername: xusername,
+                wallet: wallet,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('giveawayEntries', JSON.stringify(entries));
+            
+            // Show success
+            document.querySelector('.form-container').classList.remove('show');
+            document.querySelector('.success-state').classList.add('show');
+            
+            // To view stored entries in console:
+            console.log('All entries:', JSON.parse(localStorage.getItem('giveawayEntries')));
+            */
+
+            // Option 4: Console Logging Only (Deploy immediately, no setup)
+            // Logs to browser console - view with F12 Developer Tools
+            /*
+            const entry = {
+                email: email,
+                telegram: telegram,
+                xusername: xusername,
+                wallet: wallet || 'Not provided',
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                referrer: document.referrer || 'Direct'
+            };
+            
+            console.log('🎉 New Giveaway Entry:', entry);
+            console.table([entry]);
+            
+            // Optional: Also save to localStorage for persistence
+            const allEntries = JSON.parse(localStorage.getItem('giveawayEntries') || '[]');
+            allEntries.push(entry);
+            localStorage.setItem('giveawayEntries', JSON.stringify(allEntries));
+            
+            // Show success state
+            document.getElementById('preRegisterForm').style.display = 'none';
+            document.getElementById('successState').classList.add('show');
+            
+            // Log summary
+            console.log(`Total entries so far: ${allEntries.length}`);
+            */
+            
+            // Option 5: Backend API (ACTIVE - Works both locally and on Railway)
+            // Automatically uses the correct URL based on where it's hosted
+            const apiUrl = window.location.hostname === 'localhost' 
+                ? 'http://localhost:3000' 
+                : window.location.origin;
+            
+            fetch(`${apiUrl}/api/giveaway/enter`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    telegram: telegram,
+                    xusername: xusername,
+                    wallet: wallet || null
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Success - show the success state
+                    document.getElementById('preRegisterForm').style.display = 'none';
+                    document.getElementById('successState').classList.add('show');
+                    
+                    // Update progress bar
+                    document.querySelector('.progress-fill').style.width = '100%';
+                    
+                    // Log for debugging
+                    console.log('✅ Entry submitted:', data.entry);
+                } else {
+                    throw new Error(data.error || 'Submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Check if it's a duplicate email error
+                if (error.message && error.message.includes('already registered')) {
+                    alert('This email has already been registered!');
+                } else {
+                    alert('Error submitting form. Please try again later.');
+                }
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enter Giveaway Now';
+            });
+
+            // Simulate API call (remove this when using real submission)
+            /*
+            setTimeout(() => {
+                // Hide form and show success
+                document.getElementById('preRegisterForm').style.display = 'none';
+                document.getElementById('successState').classList.add('show');
+                
+                // Update progress bar
+                document.querySelector('.progress-fill').style.width = '100%';
+                
+                // Log registration
+                console.log('Registration:', { 
+                    email, 
+                    wallet, 
+                    timestamp: new Date().toISOString(),
+                    referrer: document.referrer,
+                    userAgent: navigator.userAgent
+                });
+                
+                // Track conversion (replace with your analytics)
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'conversion', {
+                        'send_to': 'YOUR_CONVERSION_ID',
+                        'value': 899,
+                        'currency': 'USD'
+                    });
+                }
+            }, 1500);
+            */
+        });
+        
+        
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Add micro-interactions
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.querySelector('.input-icon').style.color = 'var(--accent)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.querySelector('.input-icon').style.color = 'var(--text-muted)';
+            });
+        });
+        
+        // Admin shortcut: Press Ctrl+Shift+L to view all entries
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.shiftKey && e.key === 'L') {
+                const entries = JSON.parse(localStorage.getItem('giveawayEntries') || '[]');
+                if (entries.length === 0) {
+                    alert('No entries yet!');
+                } else {
+                    console.clear();
+                    console.log('📊 GIVEAWAY ENTRIES REPORT');
+                    console.log('========================');
+                    console.log(`Total Entries: ${entries.length}`);
+                    console.log('========================\n');
+                    console.table(entries);
+                    
+                    // Download as CSV
+                    if (confirm(`Found ${entries.length} entries. Download as CSV?`)) {
+                        const csv = 'Email,Telegram,X Username,Wallet,Timestamp\n' + 
+                            entries.map(e => `"${e.email}","${e.telegram}","${e.xusername}","${e.wallet}","${e.timestamp}"`).join('\n');
+                        const blob = new Blob([csv], { type: 'text/csv' });
+                        const a = document.createElement('a');
+                        a.href = URL.createObjectURL(blob);
+                        a.download = `giveaway-entries-${new Date().toISOString().split('T')[0]}.csv`;
+                        a.click();
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
