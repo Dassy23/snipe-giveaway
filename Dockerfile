@@ -11,8 +11,8 @@ COPY SNIPE-LOGO.png .
 # Install dependencies directly (no package.json needed)
 RUN npm install express@4.18.2 cors@2.8.5 sqlite3@5.1.6
 
-# Create data directory for SQLite database
-RUN mkdir -p /app/data
+# Create data directory for SQLite database with proper permissions
+RUN mkdir -p /app/data && chmod 777 /app/data
 
 # Expose port
 EXPOSE 3000

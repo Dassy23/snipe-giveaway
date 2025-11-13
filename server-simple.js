@@ -15,7 +15,15 @@ app.use(express.static(__dirname)); // Serve static files from current directory
 // Database setup
 // Use /app/data in Docker, or current directory locally
 const dataDir = process.env.NODE_ENV === 'production' ? '/app/data' : __dirname;
+
+// Ensure data directory exists (important for Railway volumes)
+if (!fs.existsSync(dataDir)) {
+  console.log(`Creating data directory: ${dataDir}`);
+  fs.mkdirSync(dataDir, { recursive: true });
+}
+
 const dbPath = path.join(dataDir, 'giveaway.db');
+console.log(`Database path: ${dbPath}`);
 const db = new sqlite3.Database(dbPath);
 
 // Initialize database tables
