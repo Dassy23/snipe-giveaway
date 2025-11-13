@@ -69,9 +69,24 @@ app.get('/', (req, res) => {
   }
 });
 
-// Health check
+// Health check with database status
 app.get('/health', (req, res) => {
-  res.json({ status: 'healthy', service: 'SNIPE Giveaway API (Simple)' });
+  db.get('SELECT COUNT(*) as count FROM giveaway_entries', (err, row) => {
+    if (err) {
+      return res.status(500).json({ 
+        status: 'unhealthy', 
+        service: 'SNIPE Giveaway API (Simple)',
+        error: 'Database error' 
+      });
+    }
+    res.json({ 
+      status: 'healthy',
+      service: 'SNIPE Giveaway API (Simple)',
+      entries: row ? row.count : 0,
+      uptime: process.uptime(),
+      timestamp: new Date().toISOString()
+    });
+  });
 });
 
 // Submit new entry
