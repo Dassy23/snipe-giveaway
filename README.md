@@ -1,6 +1,6 @@
-# SNIPE Giveaway - Docker Edition
+# SNIPE Giveaway - PostgreSQL Edition
 
-Ultra-simple giveaway system with UI and backend in one Docker container.
+Production-ready giveaway system with PostgreSQL database for reliable data persistence.
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/deploy?template=https://github.com/yourusername/giveaway-backend)
 
@@ -17,18 +17,18 @@ That's it! Visit http://localhost:3000
 ```
 giveaway-backend/
 ├── breakpoint-giveaway.html  # UI form
-├── server-simple.js          # Backend server
+├── server-postgres.js        # Backend server (PostgreSQL)
 ├── Dockerfile                # Docker config
-├── docker-compose.yml        # Easy run command
-└── data/                     # Database storage (auto-created)
+├── docker-compose.yml        # Local development with PostgreSQL
+└── RAILWAY-POSTGRES-SETUP.md # Railway deployment guide
 ```
 
 ## 🎯 Features
 
-- **Single Container** - Everything runs in one lightweight container
-- **Auto Setup** - Dependencies installed automatically
-- **Persistent Data** - Database saved in `./data` directory
-- **Zero Config** - Just run and it works
+- **PostgreSQL Database** - Production-ready, reliable persistence
+- **Auto Setup** - Database tables created automatically
+- **100% Data Persistence** - Never lose entries on redeploy
+- **Docker Compose** - Local development with real PostgreSQL
 
 ## 📡 Endpoints
 
@@ -59,15 +59,22 @@ curl http://localhost:3000/api/giveaway/export > entries.csv
 
 ## 💾 Database
 
-SQLite database is stored in `./data/giveaway.db` and persists between container restarts.
+PostgreSQL database with automatic persistence on Railway.
 
+**Local Development:**
 ```bash
-# View entries directly
-sqlite3 data/giveaway.db "SELECT * FROM giveaway_entries;"
+# Connect to local PostgreSQL
+docker exec -it snipe-postgres psql -U snipe_user -d snipe_giveaway
 
-# Reset database
-rm -rf data/
+# View entries
+\dt  # List tables
+SELECT * FROM giveaway_entries;
+\q   # Exit
 ```
+
+**Production (Railway):**
+- Database automatically provisioned
+- Access via Railway dashboard → PostgreSQL → Data tab
 
 ## 🛠️ Docker Commands
 
@@ -116,9 +123,13 @@ node server-simple.js
 - Regular backups: `cp -r data/ backup-$(date +%Y%m%d)/`
 - Monitor with: `docker-compose logs -f`
 
-## 🌐 Deployment
+## 🌐 Railway Deployment
 
-Deployed on Railway with persistent volume storage.
+1. **Add PostgreSQL** to your Railway project (New → Database → PostgreSQL)
+2. **Push this code** - Railway auto-detects and uses PostgreSQL
+3. **Done!** Data persists automatically
+
+See [RAILWAY-POSTGRES-SETUP.md](RAILWAY-POSTGRES-SETUP.md) for detailed instructions.
 
 ## 💾 Access Your Data
 
