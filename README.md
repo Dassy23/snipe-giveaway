@@ -116,22 +116,24 @@ node server-simple.js
 - Regular backups: `cp -r data/ backup-$(date +%Y%m%d)/`
 - Monitor with: `docker-compose logs -f`
 
-## 🌐 Easy Deployment
+## 🌐 Deployment
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for one-click deployment to:
-- Railway (easiest)
-- Render (free tier)
-- Fly.io (global)
-- Any VPS
+Deployed on Railway with persistent volume storage.
 
-## 💾 Backup Your Data
+## 💾 Access Your Data
 
 ```bash
-# Quick backup
-./backup.sh
+# Download all entries as CSV
+curl https://your-app.railway.app/api/giveaway/export > entries.csv
 
-# Or via API
-curl http://localhost:3000/api/giveaway/export > entries.csv
+# View entry count
+curl https://your-app.railway.app/api/giveaway/count
+
+# Check health
+curl https://your-app.railway.app/api/giveaway/health
 ```
+
+### Automated Backups
+GitHub Actions automatically backs up your data daily. Check `.github/workflows/backup.yml`.
 
 That's all! Super simple, fully containerized giveaway system. 🎉
