@@ -14,9 +14,18 @@ app.use(express.static(__dirname)); // Serve static files from current directory
 
 // PostgreSQL connection
 // Railway provides DATABASE_URL automatically when you add PostgreSQL
+console.log('🔍 DATABASE_URL exists:', !!process.env.DATABASE_URL);
+console.log('🔍 NODE_ENV:', process.env.NODE_ENV);
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+  ssl: process.env.DATABASE_URL && process.env.DATABASE_URL.includes('railway.app') 
+    ? { rejectUnauthorized: false } 
+    : false,
+  // Add connection pool settings
+  max: 10,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 10000,
 });
 
 // Initialize database tables
@@ -237,10 +246,12 @@ app.get('/api/giveaway/export', async (req, res) => {
 async function startServer() {
   try {
     // Test database connection
-    await pool.query('SELECT NOW()');
-    console.log('✅ Connected to PostgreSQL database');
+    console.log('🔄 Testing database connection...');
+    const testResult = await pool.query('SELECT NOW() as current_time');
+    console.log('✅ Connected to PostgreSQL database at:', testResult.rows[0].current_time);
     
     // Initialize database
+    console.log('🔄 Initializing database tables...');
     await initializeDatabase();
     
     // Start Express server
@@ -266,7 +277,22 @@ async function startServer() {
       `);
     });
   } catch (err) {
-    console.error('Failed to start server:', err);
+    console.error('❌ Failed to start server:', err.message);
+    console.error('Full error:', err);
+    
+    // Provide helpful error messages
+    if (!process.env.DATABASE_URL) {
+      console.error('\n⚠️  DATABASE_URL is not set!');
+      console.error('For Railway: Make sure PostgreSQL is added to your project');
+      console.error('For local: Set DATABASE_URL in docker-compose.yml\n');
+    } else if (err.code === 'ECONNREFUSED') {
+      console.error('\n⚠️  Could not connect to PostgreSQL');
+      console.error('Make sure PostgreSQL is running\n');
+    } else if (err.code === 'ENOTFOUND') {
+      console.error('\n⚠️  Could not resolve database hostname');
+      console.error('Check your DATABASE_URL\n');
+    }
+    
     process.exit(1);
   }
 }
